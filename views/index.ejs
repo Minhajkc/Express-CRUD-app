@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        #first2 {
+            background-color: rgb(17, 27, 75);
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+     
+        <div class="col-12" id="first2">
+            <h1 class="display-2 text-center">Users</h1>
+            <form action="/form" method="get" class="d-flex">
+                <button type="submit" class="btn btn-primary ml-auto my-3">ADD A USER</button>
+            </form>
+            <table class="table table-bordered table-dark ">
+                
+                <thead>
+                    
+               
+                   
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Delete</th>
+                        <th>Edit</th>
+                    </tr>
+                    <tbody>
+                        <% jsonData.forEach(user => { %>
+                            <tr>
+                                <td><%= user.name %></td>
+                                <td><%= user.phone %></td>
+                                <td><%= user.age %></td>
+                                <td><%= user.email %></td>
+                                <td>
+                                    <form action="/delete/<%= user.id %>" method="get">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/edit/<%= user.id %>" method="get">
+                                        <button type="submit" class="btn btn-info">Edit</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                    
+
+
+
+                   
+                </thead>
+                <tbody>
+                
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
